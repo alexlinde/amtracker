@@ -1,0 +1,4 @@
+// Defaults (empty = server registration disabled), then optional local secrets.
+AMTRACKER_SERVER_URL =
+AMTRACKER_SHARED_SECRET =
+#include? "Secrets.xcconfig"

@@ -1,0 +1,9 @@
+node_modules
+dist
+test
+.git
+*.md
+deploy.sh
+*.p8
+.env*
+#!include:.gitignore

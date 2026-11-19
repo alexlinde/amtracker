@@ -1,0 +1,16 @@
+Config/Secrets.xcconfig
+build/
+DerivedData/
+.build/
+xcuserdata/
+.DS_Store
+server/node_modules/
+node_modules/
+
+# Secrets / keys
+*.p8
+.env
+.env.*
+
+# Build output
+server/dist/
