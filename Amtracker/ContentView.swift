@@ -19,7 +19,9 @@ struct ContentView: View {
         }
         .padding(.horizontal, 12).padding(.top, 6).padding(.bottom, 8)
         // Foreground auto-refresh every 60s (shared with the Live Activity's local updates).
-        .task(id: scenePhase) {
+        // Keyed on active/not-active (not the raw phase) so background→inactive→active
+        // transitions don't cancel and restart an in-flight refresh.
+        .task(id: scenePhase == .active) {
             guard scenePhase == .active else { return }
             while !Task.isCancelled {
                 await reload()

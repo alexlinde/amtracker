@@ -47,6 +47,10 @@ final class TrainStore: ObservableObject {
                 error = e.message
             }
             await live.refreshLocally(runs: runs)
+        } catch is CancellationError {
+            // Refresh task was cancelled (e.g. app left the foreground) — not a user-facing error.
+        } catch let e as URLError where e.code == .cancelled {
+            // Same, surfaced by URLSession.
         } catch {
             self.error = "Couldn't update: \(error.localizedDescription)"   // keep last-known data
         }
